@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import userData from './Data';
 
 function App() {
+  const [user, setUser] = useState(userData);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>Getting Data from User</h2> <br/>
+      <ol class="list-group list-group-flush">
+        {/* map to iterate over arrays */}
+        {user.map(user => (
+          //key attribute identify data that changed
+          <li key={user.id} class="list-group-item">
+            <p>Name: {user.name}</p>
+            <p>Age: {user.age}</p>
+            <p>Country: {user.country}</p>
+          </li>
+        ))}
+      </ol>
     </div>
   );
 }
